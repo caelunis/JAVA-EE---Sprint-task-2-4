@@ -10,14 +10,12 @@ import models.Task;
 
 import java.io.IOException;
 
-@WebServlet(value ="/")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/add-task-servlet")
 
+public class AddTaskServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         req.getRequestDispatcher("home.jsp").forward(req, resp);
-
     }
 
     @Override
@@ -30,7 +28,5 @@ public class HomeServlet extends HttpServlet {
         task.setDescription(description);
         task.setDeadlineDate(deadline);
         DbManager.addTask(task);
-        resp.sendRedirect("/");
     }
-
 }
